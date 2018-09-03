@@ -12,9 +12,9 @@ import java.io.Serializable;
  **/
 public class Order implements Serializable {
 
-    private String id;
-    private String name;
-    private String messageId;
+    private String id;  //order实体普通字段
+    private String name;//order实体普通字段
+    private String messageId; //**存储消息发送的唯一标识
 
     public String getId() {
         return id;
