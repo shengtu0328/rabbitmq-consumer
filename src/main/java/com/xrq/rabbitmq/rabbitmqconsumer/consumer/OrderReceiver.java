@@ -13,10 +13,13 @@ import java.util.Map;
 @Component
 public class OrderReceiver {
     @RabbitListener(bindings = @QueueBinding(
-            value = @Queue(value = "order-queue", durable = "true"),
-            exchange=@Exchange(name="order-exchange",durable = "true",type="topic"),
+            value = @Queue(value = "order-queue", durable = "true"),//队列的配置，durable是否持久化
+            exchange=@Exchange(name="order-exchange",durable = "true",type="topic"),//exchange的配置，durable是否持久化，topic类型
             key="order.*"
-            )//监听了order-queue这个队列
+            )/**配置了过后，才能监听order-queue这个队列
+                并且在这里以注解的方式配置之后，rabbitmq management里配置的页面就不需要自己手动配置了
+            **/
+
     )
     @RabbitHandler//以注解的方式来监听
     public void onOrderMessage(@Payload Order order, /*@Payload是springframework.messaging的注解，payload 可以理解为一系列信息中最为关键的信息，算是消息体内容。因为知道传消息体是Order，所以这里可以直接定义成Order类型*/
