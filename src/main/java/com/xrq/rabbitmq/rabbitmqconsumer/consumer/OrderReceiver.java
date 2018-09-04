@@ -1,7 +1,7 @@
 package com.xrq.rabbitmq.rabbitmqconsumer.consumer;
 
 import com.rabbitmq.client.Channel;
-import com.xrq.rabbitmq.rabbitmqconsumer.entity.Order;
+import com.xrq.rabbitmq.entity.Order;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
