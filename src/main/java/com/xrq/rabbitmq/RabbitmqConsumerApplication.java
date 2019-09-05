@@ -1,4 +1,4 @@
-package com.xrq.rabbitmq.rabbitmqconsumer;
+package com.xrq.rabbitmq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

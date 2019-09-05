@@ -1,4 +1,4 @@
-package com.xrq.rabbitmq.rabbitmqconsumer;
+package com.xrq.rabbitmq;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
