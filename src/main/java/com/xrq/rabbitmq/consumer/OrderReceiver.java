@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 @Component
@@ -18,6 +20,8 @@ public class OrderReceiver {
      * 配置当前的这个消费者监听order-queue这个队列
      * <p>
      * 并且在这里以注解的方式配置之后，15672端口的Rabbitmq management管理平台中就不需要自己手动配置了
+     *
+     * 并且消费端如果收到生产者发出重复的消息（例如生产者confirm失败后进行的重发），也应该能够具备幂等性处理
      **/
     @RabbitListener(
             bindings = @QueueBinding(
@@ -48,7 +52,7 @@ public class OrderReceiver {
             @Headers Map<String, Object> headers
     ) throws Exception {
         //消费者操作
-        System.err.println("------------收到消息，开始消费------------");
+        System.err.println("------------收到消息，开始消费------------"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.err.println("订单id" + order.getId());
 
         //手工签收必须要调用channel里的一个方法
